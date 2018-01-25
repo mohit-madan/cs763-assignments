@@ -19,8 +19,6 @@ for i = 1:size(r,1)
     end
 end
 
-distort = (1 + r + 0.5*(r.*r)); %distortion matrix
-
 xd_cord = meshgrid(-w_2:w_2,-h_2:h_2)/w_2; %distorted - initial one
 yd_cord = meshgrid(-h_2:h_2,-w_2:w_2)'/h_2; %distorted
 
@@ -28,13 +26,20 @@ x_cord = xd_cord; %initialisation
 y_cord = yd_cord;
 
 %%iterations for getting the undistorted matrix
-for i = 1:5
+for i = 1:10
+    distort = (r + 0.5*(r.*r)); %distortion matrix
+	
+    del_x = x_cord.*(distort);
+	del_y = y_cord.*(distort);
 
-	del_x = x_cord.*(distort) - x_cord;
-	del_y = y_cord.*(distort) - y_cord;
-
-	x_cord = xd_cord - del_x;
-	y_cord = yd_cord - del_y;
+	x_cord = x_cord - del_x;
+	y_cord = y_cord - del_y;
+    
+    for i = 1:size(r,1)
+    for j = 1:size(r,2)
+          r(i,j) = sqrt(x_cord(i,j)^2 + y_cord(i,j)^2 );
+    end
+    end
 
 end    
 
