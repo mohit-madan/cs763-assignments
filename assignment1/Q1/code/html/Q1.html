@@ -1,0 +1,277 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Q1</title><meta name="generator" content="MATLAB 8.6"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2018-01-26"><meta name="DC.source" content="Q1.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h2>Contents</h2><div><ul><li><a href="#1">MyMainScript</a></li><li><a href="#2">Your code here</a></li></ul></div><h2>MyMainScript<a name="1"></a></h2><pre class="codeinput">tic;
+clear <span class="string">P2D</span>,P3D
+</pre><pre class="codeoutput">
+P3D =
+
+    1.5528   -0.5176    0.7319    1.0000
+   -1.2704   -0.5176    0.7319    1.0000
+    0.6117   -0.5176    0.1046    1.0000
+   -0.6431   -0.5176   -0.8365    1.0000
+    1.2391   -0.5176   -1.4639    1.0000
+   -1.4900    2.5879    0.7319    1.0000
+
+</pre><h2>Your code here<a name="2"></a></h2><pre class="codeinput"><span class="comment">%we are consideriing 10 points</span>
+<span class="comment">% 2D Koordinates of 10 Points Plane World</span>
+P2D = [327,868;1870,960;1043,1320;1638,1781;689,2399;3587,920;2168,1291;2040,2036;3473,2428;3095,1746];
+<span class="comment">% 3D Koordinates of 10 Points Object World</span>
+P3D = [9,-0.9,7;0,-0.9,7;6,-0.9,5;2,-0.9,2;8,-0.9,0;-0.7,9,7;-0.7,1,5;-0.7,0,0;-0.7,9,0;-0.7,7,3];
+num = 6;
+numi = 1/num;
+P2D = P2D(1:num,:);
+P3D = P3D(1:num,:);
+P3Do = P3D
+P3Do(:,4) = 1;
+
+centroid2 = numi*sum(P2D);
+centroid3 = numi*sum(P3D);
+</pre><pre class="codeoutput">
+P3Do =
+
+    9.0000   -0.9000    7.0000
+         0   -0.9000    7.0000
+    6.0000   -0.9000    5.0000
+    2.0000   -0.9000    2.0000
+    8.0000   -0.9000         0
+   -0.7000    9.0000    7.0000
+
+</pre><pre class="codeinput">T = eye(num) - numi*ones(num); <span class="comment">%this matrix makes the centroid as origin</span>
+U = eye(num) - numi*ones(num);
+
+<span class="comment">%making the centroid origin</span>
+P2D = T*P2D;
+P3D = U*P3D;
+
+<span class="comment">%avergaae distance as root(2)</span>
+m2 = numi*sum(sqrt(sum(P2D.^2,2)));
+P2D = sqrt(2)/m2*P2D;
+
+<span class="comment">%average distance as root(3)</span>
+m3 = numi*sum(sqrt(sum(P3D.^2,2)));
+P3D = sqrt(3)/m3*P3D;
+
+<span class="comment">%Transformation matrix T</span>
+<span class="comment">%T*sqrt(2)/(0.1*sum(sqrt(sum(P2D.^2,2))))</span>
+
+<span class="comment">% Homogeneous Coordinates</span>
+P2D(:,3) = 1;
+P3D(:,4) = 1;
+
+
+<span class="comment">%construct the M matrix</span>
+clear <span class="string">M</span>;
+j=1;
+<span class="keyword">for</span> i = 1:num
+    M(j,:) = [ -P3D(i,:) 0 0 0 0 P2D(i,1)*P3D(i,:) ];
+    M(j+1,:) = [0 0 0 0 -P3D(i,:) P2D(i,2)*P3D(i,:) ];
+    j=j+2;
+<span class="keyword">end</span>
+
+<span class="comment">%apply svd</span>
+[U,S,V] = svd(M);
+
+Pcap = V(:,12)
+Pcap = reshape(Pcap,[4,3])'
+
+Hcap = P(:,1:3);
+hcap = P(:,4);
+
+<span class="comment">%estimated value of translation matrix</span>
+Xo = (-1)*inv(Hcap)*hcap;
+<span class="comment">%Xo = Xo*m3/sqrt(3) + centroid</span>
+
+[R,Q] = rqGivens(inv(Hcap));
+<span class="comment">%estimates value of rotation matrix</span>
+Rcap = R'
+Kcap = inv(Q);
+<span class="comment">%estimate for K</span>
+Kcap = Kcap/Kcap(3,3)
+
+<span class="comment">%Rcap = Rcap * m3/sqrt(3)</span>
+centroid2(1,3) = 1;
+estimated = Pcap*P3D' * m2/sqrt(2) + [centroid2' centroid2' centroid2' centroid2' centroid2' centroid2'] ;
+</pre><pre class="codeoutput">
+Pcap =
+
+    0.0000
+   -0.8198
+    0.0000
+   -0.4243
+   -0.0000
+    0.1808
+    0.0000
+    0.0936
+    0.0000
+   -0.2897
+    0.0000
+   -0.1500
+
+
+Pcap =
+
+    0.0000   -0.8198    0.0000   -0.4243
+   -0.0000    0.1808    0.0000    0.0936
+    0.0000   -0.2897    0.0000   -0.1500
+
+
+Rcap =
+
+   1.0e+12 *
+
+    0.2520   -0.0000    0.0000
+    1.4170    0.0000    0.0000
+   -1.4972   -0.0000    0.3075
+
+
+Kcap =
+
+    1.3146    0.2696   -0.1560
+   -0.1003    1.0071    0.8949
+    0.2949   -0.8592    1.0000
+
+</pre><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2015b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% MyMainScript
+
+tic;
+clear P2D,P3D
+%% Your code here
+%we are consideriing 10 points 
+% 2D Koordinates of 10 Points Plane World
+P2D = [327,868;1870,960;1043,1320;1638,1781;689,2399;3587,920;2168,1291;2040,2036;3473,2428;3095,1746];
+% 3D Koordinates of 10 Points Object World
+P3D = [9,-0.9,7;0,-0.9,7;6,-0.9,5;2,-0.9,2;8,-0.9,0;-0.7,9,7;-0.7,1,5;-0.7,0,0;-0.7,9,0;-0.7,7,3];
+num = 6;
+numi = 1/num;
+P2D = P2D(1:num,:);
+P3D = P3D(1:num,:);
+P3Do = P3D
+P3Do(:,4) = 1;
+
+centroid2 = numi*sum(P2D);
+centroid3 = numi*sum(P3D);
+%%
+T = eye(num) - numi*ones(num); %this matrix makes the centroid as origin 
+U = eye(num) - numi*ones(num);
+
+%making the centroid origin
+P2D = T*P2D;
+P3D = U*P3D;
+
+%avergaae distance as root(2)
+m2 = numi*sum(sqrt(sum(P2D.^2,2)));
+P2D = sqrt(2)/m2*P2D;
+
+%average distance as root(3)
+m3 = numi*sum(sqrt(sum(P3D.^2,2)));
+P3D = sqrt(3)/m3*P3D;
+
+%Transformation matrix T 
+%T*sqrt(2)/(0.1*sum(sqrt(sum(P2D.^2,2))))
+
+% Homogeneous Coordinates
+P2D(:,3) = 1;
+P3D(:,4) = 1;
+
+
+%construct the M matrix
+clear M;
+j=1;
+for i = 1:num
+    M(j,:) = [ -P3D(i,:) 0 0 0 0 P2D(i,1)*P3D(i,:) ];
+    M(j+1,:) = [0 0 0 0 -P3D(i,:) P2D(i,2)*P3D(i,:) ];
+    j=j+2;
+end
+
+%apply svd
+[U,S,V] = svd(M);
+
+Pcap = V(:,12)
+Pcap = reshape(Pcap,[4,3])'
+
+Hcap = P(:,1:3);
+hcap = P(:,4);
+
+%estimated value of translation matrix 
+Xo = (-1)*inv(Hcap)*hcap;
+%Xo = Xo*m3/sqrt(3) + centroid
+
+[R,Q] = rqGivens(inv(Hcap));
+%estimates value of rotation matrix
+Rcap = R'
+Kcap = inv(Q);
+%estimate for K
+Kcap = Kcap/Kcap(3,3)
+
+%Rcap = Rcap * m3/sqrt(3)
+centroid2(1,3) = 1;
+estimated = Pcap*P3D' * m2/sqrt(2) + [centroid2' centroid2' centroid2' centroid2' centroid2' centroid2'] ;
+##### SOURCE END #####
+--></body></html>

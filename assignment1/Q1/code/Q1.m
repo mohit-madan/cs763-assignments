@@ -12,7 +12,12 @@ num = 6;
 numi = 1/num;
 P2D = P2D(1:num,:);
 P3D = P3D(1:num,:);
+P3Do = P3D
+P3Do(:,4) = 1;
 
+centroid2 = numi*sum(P2D);
+centroid3 = numi*sum(P3D);
+%%
 T = eye(num) - numi*ones(num); %this matrix makes the centroid as origin 
 U = eye(num) - numi*ones(num);
 
@@ -35,8 +40,6 @@ P3D = sqrt(3)/m3*P3D;
 P2D(:,3) = 1;
 P3D(:,4) = 1;
 
-centroid2 = numi*sum(P2D)
-centroid3 = numi*sum(P3D)
 
 %construct the M matrix
 clear M;
@@ -51,21 +54,22 @@ end
 [U,S,V] = svd(M);
 
 Pcap = V(:,12)
-%Pcap = reshape(Pcap,[4,3])'
-aa = [centroid3 ;centroid3 ;centroid3 ;centroid3]
-P = m3/sqrt(3)*U*Pcap + [centroid3 ;centroid3 ;centroid3 ;centroid3]
+Pcap = reshape(Pcap,[4,3])'
 
 Hcap = P(:,1:3);
 hcap = P(:,4);
 
+%estimated value of translation matrix 
 Xo = (-1)*inv(Hcap)*hcap;
 %Xo = Xo*m3/sqrt(3) + centroid
 
 [R,Q] = rqGivens(inv(Hcap));
+%estimates value of rotation matrix
 Rcap = R'
-Kcap = inv(Q)
+Kcap = inv(Q);
+%estimate for K
 Kcap = Kcap/Kcap(3,3)
-%Rcap = Rcap * m3/sqrt(3)
 
-estimated = Pcap*P3D'
-P2D
+%Rcap = Rcap * m3/sqrt(3)
+centroid2(1,3) = 1;
+estimated = Pcap*P3D' * m2/sqrt(2) + [centroid2' centroid2' centroid2' centroid2' centroid2' centroid2'] ;
