@@ -3,18 +3,15 @@
 tic;
 clear P2D,P3D
 %% Your code here
-%we are considering 10 points 
+%we are consideriing 10 points 
 % 2D Koordinates of 10 Points Plane World
-P2D = [327,868;1870,960;1043,1320;1638,1781;689,2399;3587,920;2168,1291;2040,2036;3473,2428;3095,1746]';
+P2D = [327,868;1870,960;1043,1320;1638,1781;689,2399;3587,920;2168,1291;2040,2036;3473,2428;3095,1746];
 % 3D Koordinates of 10 Points Object World
-P3D = [9,-0.9,7;0,-0.9,7;6,-0.9,5;2,-0.9,2;8,-0.9,0;-0.7,9,7;-0.7,1,5;-0.7,0,0;-0.7,9,0;-0.7,7,3]';
+P3D = [9,-0.9,7;0,-0.9,7;6,-0.9,5;2,-0.9,2;8,-0.9,0;-0.7,9,7;-0.7,1,5;-0.7,0,0;-0.7,9,0;-0.7,7,3];
 num = 6;
 numi = 1/num;
-P2D = P2D(:,1:num)
-P3D = P3D(:,1:num);
-
-centroid2 = numi*sum(P2D,2)
-centroid3 = numi*sum(P3D,2)
+P2D = P2D(1:num,:);
+P3D = P3D(1:num,:);
 
 T = eye(num) - numi*ones(num); %this matrix makes the centroid as origin 
 U = eye(num) - numi*ones(num);
@@ -38,6 +35,9 @@ P3D = sqrt(3)/m3*P3D;
 P2D(:,3) = 1;
 P3D(:,4) = 1;
 
+centroid2 = numi*sum(P2D)
+centroid3 = numi*sum(P3D)
+
 %construct the M matrix
 clear M;
 j=1;
@@ -51,8 +51,9 @@ end
 [U,S,V] = svd(M);
 
 Pcap = V(:,12)
-Pcap = reshape(Pcap,[4,3])'
-
+%Pcap = reshape(Pcap,[4,3])'
+aa = [centroid3 ;centroid3 ;centroid3 ;centroid3]
+P = m3/sqrt(3)*U*Pcap + [centroid3 ;centroid3 ;centroid3 ;centroid3]
 
 Hcap = P(:,1:3);
 hcap = P(:,4);
