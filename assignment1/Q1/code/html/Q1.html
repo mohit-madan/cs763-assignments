@@ -144,7 +144,7 @@ Hcap = P(:,1:3);
 hcap = P(:,4);
 
 <span class="comment">%estimated value of translation matrix</span>
-Xo = (-1)*inv(Hcap)*hcap;
+Xo = (-1)*inv(Hcap)*hcap
 <span class="comment">%Xo = Xo*m3/sqrt(3) + centroid</span>
 
 [R,Q] = rqGivens(inv(Hcap));
@@ -179,6 +179,13 @@ Pcap =
     0.0000   -0.8198    0.0000   -0.4243
    -0.0000    0.1808    0.0000    0.0936
     0.0000   -0.2897    0.0000   -0.1500
+
+
+Xo =
+
+  -13.1250
+   -0.5176
+    1.4688
 
 
 Rcap =
@@ -260,7 +267,7 @@ Hcap = P(:,1:3);
 hcap = P(:,4);
 
 %estimated value of translation matrix 
-Xo = (-1)*inv(Hcap)*hcap;
+Xo = (-1)*inv(Hcap)*hcap
 %Xo = Xo*m3/sqrt(3) + centroid
 
 [R,Q] = rqGivens(inv(Hcap));

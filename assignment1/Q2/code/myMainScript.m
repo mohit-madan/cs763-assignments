@@ -31,10 +31,10 @@ for i = 1:10
 	
     del_x = x_cord.*(distort);
 	del_y = y_cord.*(distort);
-
-	x_cord = x_cord - del_x;
-	y_cord = y_cord - del_y;
+	x_cord = xd_cord + del_x;
+	y_cord = yd_cord + del_y;
     
+    %update the r
     for i = 1:size(r,1)
     for j = 1:size(r,2)
           r(i,j) = sqrt(x_cord(i,j)^2 + y_cord(i,j)^2 );

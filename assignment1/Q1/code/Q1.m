@@ -60,7 +60,7 @@ Hcap = P(:,1:3);
 hcap = P(:,4);
 
 %estimated value of translation matrix 
-Xo = (-1)*inv(Hcap)*hcap;
+Xo = (-1)*inv(Hcap)*hcap
 %Xo = Xo*m3/sqrt(3) + centroid
 
 [R,Q] = rqGivens(inv(Hcap));
