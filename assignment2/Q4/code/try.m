@@ -1,0 +1,1 @@
+  randIndexes = randi(N_pts,5,1)
