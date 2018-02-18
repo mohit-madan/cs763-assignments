@@ -2,7 +2,7 @@ require 'torch'
 ReLU = {}
 
 function ReLU:__init( inputSize, outputSize )
-    self.gradW = torch.Tensor( outputSize, inputSize)
+    self.gradW = torch.Tensor( outputSize, inputSize).zero_()
 end
 
 function ReLU:forward( input )
