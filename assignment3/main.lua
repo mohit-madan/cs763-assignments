@@ -6,21 +6,31 @@ require 'Criterian'
 batch_size = 1
 learn_rate = 0.00005
 
-layer1 = Linear
-layer1:__init(108*108,54*54)
--- layer2 = ReLU:__init(54*54,54*54)
--- layer3 = Linear:__init(54*54,27*27)
--- layer4 = ReLU:__init(27*27,27*27)
--- layer5 = Linear:__init(27*27,10*10)
-
 OurModel = Model
 OurModel:__init()
 
+layer1 = Linear
+layer1:__init(108*108,54*54)
 OurModel:addLayer(layer1)
---OurModel:addLayer(layer2)
---OurModel:addLayer(layer3)
---OurModel:addLayer(layer4)
---OurModel:addLayer(layer5)
+
+layer2 = ReLU
+layer2:__init(54*54,54*54)
+OurModel:addLayer(layer2)
+
+layer3 = Linear
+layer3:__init(54*54,27*27)
+OurModel:addLayer(layer3)
+
+layer4 = ReLU
+layer4:__init(27*27,27*27)
+OurModel:addLayer(layer4)
+
+llayer5 = Linear
+llayer5:__init(27*27,6*6)
+OurModel:addLayer(layer5)
+
+print(OurModel.Layers[1].W:size())
+
 trainD = torch.DoubleTensor()
 train = torch.load('data.bin')
 trainD = trainD:resize(train:size()):copy(train)
@@ -29,7 +39,7 @@ labels = torch.load('labels.bin')
 labels = labels:reshape(labels:size(1),1)
 
 --training 
-for i=1,30 do
+for i=1,1 do
 	print(i)
 	input = trainD[i]:reshape(1,trainD[i]:size(1))																																																																																																																																																																																																																					
 	SoftMaxInput = OurModel:forward(input)

@@ -7,9 +7,15 @@ end
 
 
 function Model:forward( input )
+
 	local temp = input
 	a={}
-	for i, l_name in ipairs(self.Layers) do
+	i=0
+	for i = 1,1,#self.Layers do
+		--print(#self.Layers)	
+		l_name = self.Layers[i]
+		--print(l_name.W:size())
+		--print(self.Layers[5].W:size())
 		temp = l_name:forward(temp) --stored for back propagation
 		table.insert(a,temp)
 	end	
@@ -19,6 +25,7 @@ end
 function Model:backward( input, gradOutput )
 	local temp =gradOutput
 	gradWeights = {}
+	i=0
 	for i = #self.Layers-1, 1, -1 do 
 		print('exec')
 		l_name = self.Layers[i]
