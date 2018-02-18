@@ -2,8 +2,8 @@ require 'torch'
 ReLU = {}
 
 function ReLU:__init( inputSize, outputSize )
-    self.gradW = torch.Tensor( outputSize, inputSize).zero_()
-    self.W = torch.Tensor( outputSize, inputSize).zero_()
+    self.gradW = torch.Tensor( outputSize, inputSize):zero()
+    self.W = torch.Tensor( outputSize, inputSize):zero()
 end
 
 function ReLU:forward( input )

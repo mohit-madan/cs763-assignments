@@ -26,7 +26,7 @@ function Model:backward( input, gradOutput )
 		table.insert(gradWeights,1,l_name.gradW)--check whether l_name.gradW is correct or l_name:gradW
 	end	
 
-	i=i-1;
+	i=1;
 	l_name = self.Layers[i]
 	temp = l_name:backward(input, temp) 
 	table.insert(gradWeights,1,l_name.gradW)		--check whether l_name.gradW is correct or l_name:gradW
@@ -45,7 +45,7 @@ function Model:clearGradParam( )
 		l_name = self.Layers[i]
 		local size1 = l_name.gradW:size(1)
 		local size2 = l_name.gradW:size(2)
-		l_name.gradW = torch.Tensor( size1, size2).zero_()
+		l_name.gradW = torch.Tensor( size1, size2):zero()
 	end
 end
 
