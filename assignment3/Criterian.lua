@@ -1,8 +1,10 @@
-Criterian = {}
+--Criterian = {}
 
 --torch.sum(outputs, dim=1) # size = [nrow, 1]
 --= -log(exp(x[class]) / (\sum_j exp(x[j])))
 --              = -x[class] + exp(\sum_j exp(x[j]))
+do 
+local Criterian = torch.class('Criterian')
 
 function Criterian:forward( input, target )
 	local exp_input = torch.exp(input)
@@ -31,4 +33,6 @@ function Criterian:backward( input, target )
 	end
 	
 	return gradLoss
+end
+
 end
