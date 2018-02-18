@@ -22,7 +22,7 @@ function Criterian:forward( input, target )
 		--print(exp_input_normalised[j][target[j][1]+1])
 		cross_entropy_loss[j] = -torch.log(exp_input_normalised[j][target[j][1]+1]) --taking -log of the desired target
 	end
-	--print(cross_entropy_loss)
+	print(cross_entropy_loss)
 	return cross_entropy_loss
 end
 

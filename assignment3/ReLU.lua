@@ -10,10 +10,11 @@ end
 
 function ReLU:forward( input )
 	self.output = (input + torch.abs(input))/2 --returns max(0,input)
+	return self.output
 end
 
 function ReLU:backward( input , gradOutput )
-	print(input)
+	--print(input)
 	local gradReLU = (torch.cdiv(input, torch.abs(input)) + 1)/2 --pointwise division
 	self.gradInput = torch.cmul(gradOutput , gradReLU);	--
 	return self.gradInput 

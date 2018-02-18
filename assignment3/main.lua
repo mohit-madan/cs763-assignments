@@ -14,7 +14,7 @@ layer1 = Linear(108*108,54*54)
 OurModel:addLayer(layer1)
 
 layer2 = ReLU(54*54,54*54)
-OurModel:addLayer(layer2)
+OurModel:addLayer(layer2) 	
 
 layer3 = Linear(54*54,27*27)
 OurModel:addLayer(layer3)
@@ -36,7 +36,7 @@ labels = torch.load('labels.bin')
 labels = labels:reshape(labels:size(1),1)
 
 --training 
-for i=1,1 do
+for i=1,29000 do
 	print(i)
 	input = trainD[i]:reshape(1,trainD[i]:size(1))																																																																																																																																																																																																																					
 	SoftMaxInput = OurModel:forward(input)
