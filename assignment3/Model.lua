@@ -20,9 +20,10 @@ function Model:backward( input, gradOutput )
 	local temp =gradOutput
 	gradWeights = {}
 	for i = #self.Layers-1, 1, -1 do 
+		print('exec')
 		l_name = self.Layers[i]
 		temp = l_name:backward(a[i-1], temp) 
-		l_name.W = l_name.W - learn_rate*temp
+		l_name.W = l_name.W - learn_rate*l_name.gradW
 		table.insert(gradWeights,1,l_name.gradW)--check whether l_name.gradW is correct or l_name:gradW
 	end	
 

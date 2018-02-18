@@ -30,14 +30,11 @@ labels = labels:reshape(labels:size(1),1)
 
 --training 
 for i=1,30 do
-	input = trainD[i]:reshape(1,trainD[i]:size(1))
-	print(input)
+	print(i)
+	input = trainD[i]:reshape(1,trainD[i]:size(1))																																																																																																																																																																																																																					
 	SoftMaxInput = OurModel:forward(input)
-	print("frstsuce")
-	print(SoftMaxInput:size())
 	cross_entropy_loss = Criterian:forward(SoftMaxInput,labels)	--the calculated loss is a global variable /
 	gradLoss = Criterian:backward(SoftMaxInput,labels)
-
-	OurModel:backward(train,gradLoss)
+	OurModel:backward(input,gradLoss)
 
 end
