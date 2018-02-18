@@ -39,7 +39,12 @@ function Model:dispGradParam( )
 end
 
 function Model:clearGradParam( )
-	-- body
+	for i= #self.Layers,1,-1 do 
+		l_name = self.Layers[i]
+		local size1 = l_name.gradW:size(1)
+		local size2 = l_name.gradW:size(2)
+		l_name.gradW = torch.Tensor( size1, size2).zero_()
+	end
 end
 
 function Model:addLayer( new_layer )--layer class object
