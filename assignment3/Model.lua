@@ -24,8 +24,8 @@ function Model:backward( input, gradOutput )
 	gradWeights = {}
 	i=0
 	for i = #self.Layers, 2, -1 do
-		--print(i)
-		--print('back')
+		print(i)
+		--																																																																																																							print('back')
 		l_name = self.Layers[i]
 		temp = l_name:backward(a[i-1], temp) 
 		l_name.W = l_name.W - learn_rate*l_name.gradW

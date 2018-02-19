@@ -8,7 +8,6 @@ do
 local Linear = torch.class('Linear')
 
 function Linear:__init( inputSize, outputSize )
-	
 	self.output = torch.Tensor( batch_size , outputSize)	-- create the output matrix -not sure
     self.W = torch.rand( outputSize, inputSize)	*.0001					-- create the Weight matrix
     self.B = torch.Tensor( outputSize, 1)
