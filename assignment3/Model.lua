@@ -22,8 +22,10 @@ function Model:backward( input, gradOutput )
 	for i = #self.Layers-1, 1, -1 do 
 		l_name = self.Layers[i]
 		temp = l_name:backward(a[i-1], temp) 
+		l_name.W = l_name.W - learn_rate*temp
 		table.insert(gradWeights,1,l_name.gradW)--check whether l_name.gradW is correct or l_name:gradW
 	end	
+
 	i=i-1;
 	l_name = self.Layers[i]
 	temp = l_name:backward(input, temp) 
@@ -50,3 +52,4 @@ end
 function Model:addLayer( new_layer )--layer class object
 	table.insert(Model.Layers, new_layer)
 end
+	
