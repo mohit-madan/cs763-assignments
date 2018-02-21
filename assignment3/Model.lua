@@ -11,7 +11,8 @@ function Model:forward( input )
 	local temp = input
 	a={}
 	for i,l_name in ipairs(self.Layers) do 
-		--print(i)
+		print('fwd')
+		print(i)
 		temp = l_name:forward(temp) --stored for back propagation
 		table.insert(a,temp)															
 		--print('debug')											-----LOOP NOT RUNNING 5 TIMES PLEASE SEE
@@ -24,11 +25,11 @@ function Model:backward( input, gradOutput )
 	gradWeights = {}
 	i=0
 	for i = #self.Layers, 2, -1 do
-		print(i)
-		--																																																																																																							print('back')
+		print(i)																																																																																																				print('back')
 		l_name = self.Layers[i]
 		temp = l_name:backward(a[i-1], temp) 
 		l_name.W = l_name.W - learn_rate*l_name.gradW
+		l_name.B = l_name.B - learn_rate*l_name.gradB
 		table.insert(gradWeights,1,l_name.gradW)--check whether l_name.gradW is correct or l_name:gradW
 	end	
 

@@ -4,8 +4,10 @@ do
 local ReLU = torch.class('ReLU')
 
 function ReLU:__init( inputSize, outputSize )
-    self.gradW = torch.Tensor( outputSize, inputSize):zero()
-    self.W = torch.Tensor( outputSize, inputSize):zero()
+    self.gradW = torch.zeros( outputSize, inputSize)
+    self.W = torch.zeros( outputSize, inputSize)
+    self.B = torch.zeros( batch_size,outputSize)
+    self.gradB = torch.zeros(  batch_size,outputSize)
 end
 
 function ReLU:forward( input )
