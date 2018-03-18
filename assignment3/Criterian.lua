@@ -36,16 +36,16 @@ function Criterian:backward( input, target )
 end
 
 function Criterian:predict( input )
-	local exp_input = torch.exp(input)
-	local sum_exp_input = torch.sum(exp_input, 2) --size = [nrow,1]
-	exp_input_normalised = torch.Tensor(input:size())
-	predicted_values = torch.Tensor(input:size(1)) --initiaising the tensor
+	--local exp_input = torch.exp(input)
+	--local sum_exp_input = torch.sum(exp_input, 2) --size = [nrow,1]
+	--exp_input_normalised = torch.Tensor(input:size())
+--	predicted_values = torch.Tensor(input:size(1)) --initiaising the tensor
 
-	for i=1,input:size(1) do
-		exp_input_normalised[i] = exp_input[i]/sum_exp_input[i][1] --dividing each element by total sum and normalising
-	end		
+--	for i=1,input:size(1) do
+--		exp_input_normalised[i] = exp_input[i]/sum_exp_input[i][1] --dividing each element by total sum and normalising
+--	end		
 	
-	val,predicted_values = torch.max(exp_input_normalised,2)
+	val,predicted_values = torch.max(input,2)
 	predicted_values = predicted_values - 1
 
 	return predicted_values

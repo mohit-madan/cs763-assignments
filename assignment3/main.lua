@@ -30,11 +30,14 @@ OurModel:addLayer(layer13)
 
 trainD = torch.DoubleTensor()
 train = torch.load('data.bin')
+
+--train = train:double()
 trainD = trainD:resize(train:size()):copy(train)
 trainD = torch.reshape(trainD,trainD:size(1),trainD:size(2)*trainD:size(3))
+
 --trainD = torch.cat(trainD, torch.ones(trainD:size(1)))
 testD = trainD[{{1,32}}]
--- testD = torch.DoubleTensor()
+-- testD = torch.DoubleTensor()																																																																																																																																																																																																																																																																																																																																																																																																																																														
 -- test = torch.load('test.bin')
 -- print(test:size())
 -- testD = testD[{{1,1+255}}]
@@ -60,7 +63,9 @@ end
  
 end
 batch_size = testD:size(1)
+--print("SoftMaxInput_test")
 SoftMaxInput_test = OurModel:forward(testD)
+--print("printed")
 predicted_values = Criterian:predict(SoftMaxInput_test)
 print(predicted_values)
 
