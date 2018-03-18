@@ -5,35 +5,25 @@ do
 
 local Criterian = torch.class('Criterian')
 
-function Criterian:forward( input, target )
+function Criterian:forward( input, target )			--input is a column vector of size 2*1
 	local exp_input = torch.exp(input)
-	local sum_exp_input = torch.sum(exp_input, 2) --size = [nrow,1]
-	
-	exp_input_normalised = torch.Tensor(input:size())
-	cross_entropy_loss = torch.Tensor(input:size(1)) --initiaising the tensor
+	sum_exp_input = torch.sum(exp_input, 1) 	--size = [nrow,1]	
 
-	for i=1,input:size(1) do
-		exp_input_normalised[i] = exp_input[i]/sum_exp_input[i][1] --dividing each element by total sum and normalising
-	end
-		
-	for j =1,input:size(1) do
-		cross_entropy_loss[j] = -torch.log(exp_input_normalised[j][target[j][1]+1]) --taking -log of the desired target
-	end
+	cross_entropy_loss = -torch.log(sum_exp_input[target+1][1]) --taking -log of the desired target
 
 	return cross_entropy_loss
 end
 
 function Criterian:backward( input, target )
-	gradLoss = exp_input_normalised
-	for i=1,input:size(1) do
-		gradLoss[i][target[i][1]+1] = gradLoss[i][target[i][1] + 1] - 1  --formula given on the internet
-	end
+	gradLoss = sum_exp_input
+	
+	gradLoss[target + 1][1] = gradLoss[target + 1][1] - 1  
 
 	return gradLoss
 end
 
 function Criterian:predict( input )	
-	val,predicted_values = torch.max(input,2)
+	val,predicted_values = torch.max(input,1)
 	predicted_values = predicted_values - 1
 
 	return predicted_values

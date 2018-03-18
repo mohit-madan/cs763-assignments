@@ -1,9 +1,10 @@
 require 'torch'
 require 'Linear'
-require 'Model'
+require 'RNN'
 require 'ReLU'
 require 'Criterian'
-batch_size = 32
-learn_rate = 0.0000005
 
-OurModel = Model
+input_dim = 340
+
+OurRNN = RNN
+OurRNN:__init(input_dim,input_dim/2)
