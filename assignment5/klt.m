@@ -1,30 +1,32 @@
 n_iter = 20;
-Template_frame = imread('/home/krishna/Desktop/Sachin/HW5/input/1.jpg');
+Template_frame = imread('/home/krishna/Desktop/Sachin/cs763/HW5/input/1.jpg');
 Template_frame = padarray(Template_frame,[3,3],'both');
-Present_frame = imread('/home/krishna/Desktop/Sachin/HW5/input/4.jpg');
+Present_frame = imread('/home/krishna/Desktop/Sachin/cs763/HW5/input/2.jpg');
 Present_frame = padarray(Present_frame,[3,3],'both');
 [p1,p2] = size(Present_frame);
 
-points = detectHarrisFeatures(Template_frame);
+points = detectSURFFeatures(Template_frame);
 Hpnts = round(points.Location);%1st column = y cord and 2nd column = x cord 
 
-smooth = imgaussfilt(Template_frame,2);
-[Gtx,Gty] = imgradientxy(smooth);
+[Gtx,Gty] = imgradientxy(Template_frame);
 all_eigen = [];
 
-for i = 1:size(Hpnts,1)
+for i = 1:1%size(Hpnts,1)
     %ith feature point
     H = 0;
-    for j = -3:3
-        for k = -3:3
-            x = Hpnts(i,1);
-            y = Hpnts(i,2);
+    for j = 0%-3:3
+        for k = 0%-3:3
+            x = Hpnts(i,1) + j;
+            y = Hpnts(i,2) + k ;
             Ix = Gtx(y,x);
             Iy = Gty(y,x); 
             h = [x*Ix y*Ix Ix x*Iy y*Iy Iy]';
             H = H + h*h';
         end
     end
+    i
+    H = H;
+    inv(H);
     e = eig(H);
     all_eigen = [all_eigen; e'];
 end
@@ -71,11 +73,12 @@ for i = 1:1
         g = 1;
         for j=1:n
             for k=1:m
-                Sum = Sum + double(diff(k,j)) * second_factor(g); %double for data type
+                Sum = Sum + double(diff(k,j)) * second_factor(g,:) %double for data type
                 g=g+1;
             end
         end
-
+           
+        
 
 
         H = 0;
